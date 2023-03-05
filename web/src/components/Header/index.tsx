@@ -4,15 +4,17 @@ import { Plus, X } from 'phosphor-react'
 import * as Dialog from '@radix-ui/react-dialog';
 import { NewHabitForm } from '../NewHabitForm';
 
-export function Header() {
+interface HeaderProps {
+  pageReloader: () => void
+}
 
-
+export function Header({ pageReloader }: HeaderProps) {
 
   return (
     <div className="w-full max-w-3xl mx-auto flex items-center justify-between">
       <img src={logo} alt="" />
 
-      <Dialog.Root>
+      <Dialog.Root onOpenChange={(open) => !open && pageReloader()}>
         <Dialog.Trigger
           type="button"
           className="border border-violet-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-violet-300 transition-colors focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 focus:ring-offset-background"

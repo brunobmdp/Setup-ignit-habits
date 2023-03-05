@@ -33,7 +33,7 @@ export function HabitsList({ date, onCompletedChanged }: HabitsListProps) {
   }, [])
 
   async function handleToggleHabit(habitId: string) {
-    await api.patch(`/habits/${habitId}/toggle`)
+
 
     const isHabitCompleted = habitsInfo!.completedHabits.includes(habitId)
 
@@ -49,6 +49,7 @@ export function HabitsList({ date, onCompletedChanged }: HabitsListProps) {
       completedHabits,
     })
     onCompletedChanged(completedHabits.length)
+    await api.patch(`/habits/${habitId}/toggle`)
   }
 
   const isDatePast = dayjs(date)

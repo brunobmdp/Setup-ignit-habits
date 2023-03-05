@@ -4,14 +4,15 @@ import { ProgressBar } from './components/ProgressBar';
 
 import dayjs from 'dayjs';
 import { HabitsList } from './components/HabitsList';
-import { useEffect, useState } from 'react';
-import { api } from '../../lib/axios';
+import { useState } from 'react';
+
 
 
 interface HabitsProps {
   defaultCompleted?: number
   amount?: number
   date: Date
+
 }
 
 export function HabitDay({ defaultCompleted = 0, amount = 0, date }: HabitsProps) {
@@ -30,7 +31,7 @@ export function HabitDay({ defaultCompleted = 0, amount = 0, date }: HabitsProps
   }
 
   return (
-    <Popover.Root >
+    <Popover.Root  >
       <Popover.Trigger
         className={clsx('w-10 h10 border-2  rounded-lg hover:opacity-70  transition-all focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 focus:ring-offset-background  ', {
           [' bg-zinc-900 border-zinc-800']: progressPercentage === 0,
